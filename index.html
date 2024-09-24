@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Mining Project</title>
+
+    <!--- favicon-->
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.ico"
+      type="image/x-icon"
+    />
+
+    <!--- custom css link-->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!--- google font link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .main {
+        margin: 15px 12px;
+        margin-bottom: 75px;
+        min-width: 259px;
+      }
+
+      .Projectmain {
+        max-width: 1200px;
+        margin-inline: auto;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 25px;
+      }
+
+      .Projectmain-content {
+        min-width: 105%;
+        width: 100%;
+      }
+      #PT {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 0px;
+      }
+      .proImg {
+        margin: 30px 150px 10px 30px;
+        border-radius: 10px;
+        height: 350px;
+        width: 750px;
+      }
+
+      .exImg {
+        margin: 30px 10px 10px 0px;
+        border-radius: 10px;
+        height: 1200px;
+        width: 850px;
+      }
+      .fImg {
+        margin: 30px 10px 10px 0px;
+        border-radius: 10px;
+        height: 200px;
+        width: 800px;
+      }
+      .resImg {
+        margin: 30px 150px 10px 30px;
+        border-radius: 10px;
+        height: 750px;
+        width: 750px;
+      }
+      .eqnImg {
+        margin: 30px 150px 10px 30px;
+        border-radius: 10px;
+        height: 200px;
+        width: 750px;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <header>
+      <h1 class="h2" id="PT">Predicting social effects on pharmaceutical wastewater concentrations</h1>
+    </header>
+
+    <main>
+      <div class="sidebar-info">
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+
+      <div class="main-content">
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link>Introduction</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>DataExploration</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Models</button>
+            </li>
+
+            <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Conclusion</button>
+          </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Team</button>
+            </li>
+          </ul>
+        </nav>
+
+        <article class="about active" data-page="introduction">
+          <header>
+            <h2 class="h2 article-title">Motivation</h2>
+          </header>
+          <section class="about-text">
+            <p>In 2009, Rockström et al. proposed the concept of planetary boundaries, or a safe operating space for human society beyond which human development is no longer sustainable and threatens the stability of the Earth system. If these boundaries are transgressed, then Earth may enter a new geological era, the Anthropocene, which would be unprecedented in human history and may challenge humans’ survival. The planetary boundary model has undergone several iterations since its initial proposal. As of 2023, the thresholds for 9 planetary boundaries have been quantified: climate change, biosphere integrity, land system change, freshwater change, biogeochemical flows, ocean acidification, atmospheric aerosol loading, stratospheric ozone depletion, and novel entities. According to this most recent model, 6 of the 9 planetary boundaries have been transgressed.</p>
+            <img class="proImg" src="assets/Pictures/Figure_1.jpg" alt="The 2023 planetary boundary model"/>
+            <p>To mitigate the potential shift into the Anthropocene era, the planetary boundary model needs to be further refined, and actionable steps need to be identified. In alignment with this goal, this research will focus on the novel entities planetary boundary, which is among the six transgressed boundaries. Novel entities include novel chemicals, synthetic organisms, and materials or life forms altered or mobilized by human activity. Such entities undergo rapid development. Consequently, novel entities remain difficult to quantify and regulate globally.</p>
+            <p>Pharmaceuticals are no exception. On average, the U.S. Food & Drug Administration (FDA) approves a new pharmaceutical within 8.7 years of initial investigation</p>
+            <img class="proImg" src="assets/Pictures/Figure_2.png" alt="Distribution of FDA approval time for pharmaceuticals in the U.S. from 2010-2019, adapted from"/>
+            <p>In contrast, regulation of chemical contaminants under the U.S. Safe Drinking Water Act often takes 25 years or longer. For example, the first lawsuit to regulate carcinogenic per- and poly-fluoroalkyl substances, also known as PFAS or forever chemicals, was initiated in 1998, but PFAS were not regulated in drinking water until April 2024. Unlike PFAS, pharmaceuticals are beneficial to human health and should continue to undergo rapid development to assist in treating new or previously untreatable diseases. However, when pharmaceuticals enter the environment, they become contaminants, and striking a balance between rapid drug development and environmental management proves to be a challenge. Pharmaceuticals primarily enter the environment through residential and non-residential wastewater and agricultural runoff, mostly affecting organisms living in impacted surface waters and riparian organisms within the same food web. In these non-target organisms, pharmaceuticals have demonstrated ecotoxicological effects such as increased cancer rates and physiological and reproductive dysfunction. In addition to the broad ecotoxicity of pharmaceuticals, releasing antimicrobial drugs into the environment drives antimicrobial resistance, which has been identified as one of the greatest public health challenges of the next century. If trends continue, there will be as many global deaths from microbial infection as from cancer by 2050.</p>
+            <p>If advanced wastewater treatment technology is available, most pharmaceuticals should be sufficiently removed from wastewater. However, many small and low-income communities have access to conventional and/or decentralized wastewater treatment only and may lack wastewater treatment altogether, especially in low-income countries. This means that the people living in these communities as well as the ecosystems associated with them are experiencing contamination due to pharmaceuticals. If the community uses surface water as a drinking water source, then their drinking water may be contaminated with a complex mixture of pharmaceuticals. While these pharmaceuticals are present at low levels, they are designed to be bioactive at such levels and therefore may cause physiological effects. Furthermore, the mixture effects of pharmaceuticals on human health have not been well-studied and may lead to adverse health outcomes. Pharmaceutical mixtures pose additional challenges beyond the existing infrastructure by complicating water reuse. Because of climate change, many communities in dry regions of the world are experiencing water scarcity. When surface water is not drying up entirely, much of the surface water flow is derived from wastewater discharge, a phenomenon known as de facto water reuse.  Intentional water reuse provides a potential solution to water scarcity, but contaminants like pharmaceuticals are resistant to degradation and make water reuse more challenging and expensive to implement. To support access to clean water globally, low-cost strategies for removing contaminants like pharmaceuticals are needed.</p>
+          </section>
+          <header>
+            <h2 class="h2 article-title">Background</h2>
+          </header>
+          <section class="about-text">
+            <p>Pharmaceuticals in wastewater have been widely studied, with over 310,000 publications in the literature since 1975.</p>
+            <img class="proImg" src="assets/Pictures/Figure_3.png" alt="Number of publications on pharmaceuticals in wastewater per year, 1975-2024"/>
+            <p>More recently, researchers have begun using prescription data to estimate the consumption and the predicted environmental concentration of different pharmaceuticals. Predicting pharmaceutical concentrations in wastewater is helpful for both environmental risk assessment and treatment optimization. Such models can identify pharmaceuticals likely to pass through wastewater treatment or exceed toxicity levels, which can inform treatment prioritization. They can also assist in environmental justice efforts by locating sites that might require additional monitoring for pharmaceutical contamination without requiring expensive chemical analysis. Finally, they can be used to determine what treatment strategies are most successful at removing different pharmaceuticals, potentially informing more effective treatment trains. Despite these benefits, predictive pharmaceutical occurrence models remain largely undeployed in the United States. While these models have been utilized in other countries, there is significant regional variation in pharmaceutical regulations, access, and consumption patterns between countries and so generalization is not possible [9, 23]. Furthermore, pharmaceutical occurrence can be influenced by many factors including prescription cost and insurance coverage, demographics, over-the-counter and other non-prescription sources, and chemical reactions and partitioning processes (e.g., sorbing to sewer sediments) in the sewer system. The existing models do not account for these processes.</p>
+            <p>The goal of this research is to develop a holistic model that includes more of the factors influencing pharmaceutical occurrence in the United States. To this end, the SeweRx app is being developed. SeweRx is an R Shiny app with two modules: PharmUse and PharmFlush.</p>
+            <img class="proImg" src="assets/Pictures/sewerx logo.png" alt="SeweRx, PharmUse, and PharmFlush logos"/>
+            <p>PharmUse is a database that synthesizes information on 290 pharmaceuticals from multiple public datasets. Currently, PharmUse contains data from the 2020 U.S. Agency for Healthcare Research & Quality Medical Expenditure Panel Survey (MEPS), the U.S. Environmental Protection Agency CompTox Chemicals Dashboard v2.2.0, and the 2017, 2021, and 2023 U.S. Food & Drug Administration Established Pharmacologic Class Text Phrase Listing. Data includes daily mass load per pharmaceutical, number of prescriptions per pharmaceutical, duration of prescription, and the identifiers (SMILES, InChI string, InChIKey), physicochemical properties, measured toxicity values, and pharmacologic class associated with each pharmaceutical. While multiple toxicity measurements were available, the Lethal Concentration 50 (concentration that kills 50% of test subjects) was used for acute toxicity and the No Observed Effect Concentration (highest concentration at which no adverse health outcomes occur) was used for chronic toxicity. The current PharmFlush model employs a binomial probability mass function to determine the most likely number of prescriptions in a sewershed (i.e., community served by a wastewater treatment plant) of a given size on any given day. Next, PharmFlush computes the expected daily mass load and concentration in wastewater influent (i.e., flow into the wastewater treatment plant) for each pharmaceutical, where concentration depends on flow dilution from residential and non-residential buildings. Finally, PharmFlush randomly draws from the binomial distribution for each pharmaceutical 100 times. Averaging the results of these simulations introduces additional variability into the expected concentrations to simulate the variability in pharmaceutical consumption over time.</p>
+            <p>Currently, PharmFlush’s predictions are based solely on the likelihood of prescription, assuming a non-compliance rate of 50% for prescription completion. The value of this current form of PharmFlush is that it provides a baseline against which to compare experimental measurements and provides clues as to what processes might be relevant to predict a given pharmaceutical’s concentration. If a pharmaceutical’s concentration is overpredicted, then there are additional degradation or removal processes occurring for which PharmFlush is not accounting (such as chemical reactions in the sewer network). Conversely, if a pharmaceutical’s concentration is underpredicted, then there are additional sources of that pharmaceutical entering the wastewater (such as from veterinary medicine or over-the-counter use). It is also possible that some pharmaceutical concentrations are driven mostly by consumption, with other processes being negligible in comparison. For such pharmaceuticals, PharmFlush should perform well. To evaluate how well PharmFlush is performing in its current state, a systematic literature search was conducted. The literature search included experimental pharmaceutical concentration measurements in wastewater influent in the United States in literature published between 2019 and 2024. The resulting dataset is derived from 34 papers (selected from 399 papers) with 1224 recorded measurements and coverage for over 80 pharmaceuticals. Notably, the literature search will be updated to provide increased coverage for model validation prior to data analysis. Since this research is ongoing, results from the analysis described above will be summarized in future iterations of this project.</p>
+          </section>
+          <header>
+            <h2 class="h2 article-title">Objectives</h2>
+          </header>
+          <section class="about-text">
+            <p>In its current form, PharmFlush is a baseline model. New data must be integrated into the model to make it more holistic and accurate. Data sources for this integration include the MEPS survey for years 2012-2019 and 2021-2022, Medicaid.gov Pharmacy Pricing, and Medicare Spending by Drug. Data on veterinary prescriptions, over-the-counter prescriptions, commonly abused prescription drugs, and drug administration route are forthcoming. This project encompasses 10 objectives for improving SeweRx’s performance against the experimental data collected in the literature search. Broadly, this project seeks to determine how social and behavioral factors influence pharmaceutical concentration predictions and how pharmaceutical concentrations may change over time with changes in consumption patterns.</p>
+            <ol>
+              <li>1. How do veterinary prescriptions affect predicted pharmaceutical concentrations?</li>
+              <li>2. How do over-the-counter prescriptions affect predicted pharmaceutical concentrations? </li>
+              <li>3. How does abuse of prescription medication affect predicted pharmaceutical concentrations?</li>
+              <li>4. How do cost and prescription insurance coverage affect pharmaceutical concentration?</li>
+              <li>5. How does drug administration route influence pharmaceutical concentration?</li>
+              <li>6. How have prescriptions for different pharmaceuticals changed over time between 2012 and 2022?</li>
+              <li>7. How might changes in pharmaceutical consumption over time affect predicted pharmaceutical concentrations?</li>
+              <li>8. How have antimicrobial prescriptions changed between 2012 and 2022?</li>
+              <li>9. How did prescription pharmaceutical usage change during the COVID-19 pandemic?</li>
+              <li>10. How might social and scientific shifts in response to events like antimicrobial resistance and pandemics influence pharmaceutical concentration predictions?</li>
+            </ol>
+          </section>
+
+          <section class="about-text">
+            <div class="modal-container" data-modal-container>
+              <div class="overlay" data-overlay></div>
+
+              <section class="testimonials-modal">
+                <button class="modal-close-btn" data-modal-close-btn>
+                  <ion-icon name="close-outline"></ion-icon>
+                </button>
+              </section>
+            </div>
+          </section>
+        </article>
+
+        <article class="resume" data-page="dataexploration">
+          <header>
+            <h2 class="h3 article-title">EDA</h2>
+          </header>
+          <section class="about-text">
+            <p>To be updated in future milestones</p>
+          </section>
+        </article>
+
+        <article class="portfolio" data-page="models">
+          <header>
+            <h2 class="h2 article-title">ML Models</h2>
+          </header>
+
+          <section class="about-text">
+            <div class="filter-select-box">
+              <button class="filter-select" data-select>
+                <div class="select-value" data-selecct-value>
+                  Select category
+                </div>
+
+                <div class="select-icon">
+                  <ion-icon name="chevron-down"></ion-icon>
+                </div>
+              </button>
+            </div>
+              <p>To be updated in future milestones</p>
+          </section>
+        </article>
+        <article class="blog" data-page="conclusion">
+
+        <header>
+          <h2 class="h2 article-title">Results</h2>
+        </header>
+        <section class="about-text">
+          <p>To be updated in future milestones</p>
+        </section>
+      </article>
+
+        <article class="contact" data-page="team">
+          <header>
+            <h2 class="h2 article-title">About</h2>
+          </header>
+
+        <br>
+        <!-- Vanessa Section Start-->
+
+        <div class="content-card"
+          style="display: flex; align-items: flex-start; gap: 20px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);; border-radius: 10px;">
+          <!-- Image Section -->
+          <figure style="margin: 0; display: flex; flex-direction: column; align-items: center;">
+            <img src="assets/Pictures/vanessa_headshot.png" alt="Vanessa Maybruck"
+              style="width: 100%; max-width: 200px; height: 250px; border-radius: 10px; margin-top: 50px; margin-bottom: 10px;">
+            <div style="text-align: center;">
+              <h5 class="h5 form-title">Socials:</h5>
+              <ul class="social-list"
+                style="list-style: none; padding: 0; display: flex; justify-content: center; gap: 10px;">
+                <li class="social-item">
+                  <a href="https://github.com/NessaGrace" class="socials-item">
+                    <img src="./assets/Pictures/github.png" style="width: 30px; height: 30px;">
+                  </a>
+                </li>
+                <li class="social-item">
+                  <a href="https://www.linkedin.com/in/vanessa-maybruck-4aa389194/" class="socials-item">
+                    <img src="./assets/Pictures/linkedin.png" style="width: 30px; height: 30px;">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </figure>
+
+          <!-- Text Section -->
+          <div class="text-section" style="flex: 1; min-width: 300px;">
+            <h3 class="h3 form-title" style="margin: 0;">Vanessa Maybruck</h3>
+            <div class="email-field" style="margin-top: 10px;">
+              <div class="email-text">
+                Vanessa is a 3rd-year PhD student and National Science Foundation (NSF) Graduate Research Fellow at the
+                University of Colorado Boulder in the Environmental Engineering program,
+                where she works in Cresten Mansfeldt’s lab. She is also pursuing certificates in Interdisciplinary
+                Quantitative Biology and Data Science. Broadly, Vanessa is interested in combining
+                data science, mathematical modeling, and laboratory techniques to mitigate chemical pollution, combat
+                antimicrobial resistance, and develop sustainable solutions using wastewater as a resource.
+                Currently, she is developing an app to characterize pharmaceutical pollutants at different points in the
+                direct potable water reuse process, and her upcoming projects will focus on green pharmaceutical
+                development and sewer resilience to novel biopharmaceuticals. Vanessa is also involved in research on ethical conduct of
+                wastewater-based surveillance in diverse communities. In addition to her research, Vanessa serves on the
+                annual Colorado Water, Sanitation, & Hygiene
+                Symposium planning committee and is an affiliate of the Institute for the Quantitative Study of
+                Inclusion, Diversity, & Equity, and she engages in as many science communication and outreach events as
+                she can. Vanessa graduated from Kutztown University
+                of Pennsylvania in 2022 with dual bachelor’s degrees in Applied Mathematics and Secondary Education:
+                Mathematics and a minor in Biochemistry.
+                <br><br>
+                In her spare time, Vanessa enjoys singing, obsessing over her favorite science fiction and fantasy
+                series and musicals,
+                petting dogs, hiking, yoga, and volunteering.
+                <br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Vanessa Section end-->
+        <br>
+        <br>
+
+        <!-- Akhila Section start-->
+
+        <div class="content-card"
+          style="display: flex; align-items: flex-start; gap: 20px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);; border-radius: 10px;">
+          <!-- Image Section -->
+          <figure style="margin: 0; display: flex; flex-direction: column; align-items: center;">
+            <img src="assets/Pictures/akhila_annireddy_headshot.png" alt="Akhila Annireddy"
+              style="width: 100%; max-width: 200px; height: 250px; border-radius: 10px; margin-top: 50px; margin-bottom: 10px;">
+            <div style="text-align: center;">
+              <h5 class="h5 form-title">Socials:</h5>
+              <ul class="social-list"
+                style="list-style: none; padding: 0; display: flex; justify-content: center; gap: 10px;">
+                <li class="social-item">
+                  <a href="https://github.com/AkhilaAnnireddy" class="socials-item">
+                    <img src="./assets/Pictures/github.png" style="width: 30px; height: 30px;">
+                  </a>
+                </li>
+                <li class="social-item">
+                  <a href="https://www.linkedin.com/in/akhilaannireddy/" class="socials-item">
+                    <img src="./assets/Pictures/linkedin.png" style="width: 30px; height: 30px;">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </figure>
+
+          <!-- Text Section -->
+          <div class="text-section" style="flex: 1; min-width: 300px;">
+            <h3 class="h3 form-title" style="margin: 0;">Akhila Annireddy</h3>
+            <div class="email-field" style="margin-top: 10px;">
+              <div class="email-text">
+                Akhila Annireddy is a passionate data science professional currently pursuing a Master of Science in Data Science at the University of Colorado Boulder. 
+                With a strong foundation in system design and software development, she aims to integrate data science techniques into developing end-to-end machine learning models for real-world applications. 
+                Akhila brings extensive experience from her role as a Software Development Engineer at JP Morgan Chase, where she worked on cloud migration to AWS, automated user onboarding systems, and CI/CD pipelines for efficient deployment. 
+                Her deep technical skills and practical experience allow her to blend data science with system architecture, enabling her to build robust, customer-ready solutions.
+                <br><br>
+                Akhila enjoys a diverse range of creative and relaxing hobbies in her free time. 
+                She has a passion for traditional mandala art and quilling, both of which allow her to explore intricate designs and creative expression. 
+                In addition to her artistic pursuits, she loves taking long walks, which help her unwind and reflect. 
+                Dancing is another joyful outlet for her, offering a fun and energetic way to stay active. 
+                These hobbies provide her with a balance of creativity, movement, and mindfulness.
+                <br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Akhila Section end-->
+
+        <br>
+        <br>
+
+        <!-- Meghna Section Start-->
+
+        <div class="content-card"
+          style="display: flex; align-items: flex-start; gap: 20px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);; border-radius: 10px;">
+          <!-- Image Section -->
+          <figure style="margin: 0; display: flex; flex-direction: column; align-items: center;">
+            <img src="assets/Pictures/meghna_headshot.png" alt="Meghna Nag"
+              style="width: 100%; max-width: 200px; height: 250px; border-radius: 10px; margin-top: 50px; margin-bottom: 10px;">
+            <div style="text-align: center;">
+              <h5 class="h5 form-title">Socials:</h5>
+              <ul class="social-list"
+                style="list-style: none; padding: 0; display: flex; justify-content: center; gap: 10px;">
+                <li class="social-item">
+                  <a href="https://github.com/meghnanag2" class="socials-item">
+                    <img src="./assets/Pictures/github.png" style="width: 30px; height: 30px;">
+                  </a>
+                </li>
+                <li class="social-item">
+                  <a href="https://www.linkedin.com/in/meghna-nag-a46aa7221" class="socials-item">
+                    <img src="./assets/Pictures/linkedin.png" style="width: 30px; height: 30px;">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </figure>
+
+          <!-- Text Section -->
+          <div class="text-section" style="flex: 1; min-width: 300px;">
+            <h3 class="h3 form-title" style="margin: 0;">Meghna Nag</h3>
+            <div class="email-field" style="margin-top: 10px;">
+              <div class="email-text">
+                Meghna is pursuing her Master's in Data Science at the University of Colorado Boulder, combining over 6
+                years of software development experience with a deep passion for exploring the world of AI.
+                She is passionate about coding and is eager to use the power of machine learning, artificial
+                intelligence, mathematical modeling, and
+                natural language processing to their fullest potential for the betterment of society and has a passion
+                for working in various sectors such
+                as Health, Banking, Education, and many more. She specializes in software development and her last
+                experience was as an Engineering Lead with
+                the responsibility of developing connectors that integrate AWS AppFlow and AWS Glue with various SaaS
+                applications using various AWS services
+                like EC2, Lambda, API Gateway, S3, IAM, CloudWatch, DynamoDB, and AWS CodeCommit. She has over 5 years
+                of experience in backend and UI development using
+                Java, Matlab, C, PostgreSQL, Oracle SQL, Spring MVC Architecture, HTML, JavaScript, CSS, jQuery, and
+                AngularJS. While working in a diverse team as both
+                a team lead and a team member, her contribution to end-to-end development has often been recognized with
+                various professional awards.
+                <br><br>
+                Her favorite activities include taking long, serene walks and riding in the evenings while listening to
+                pleasant blues music. She has a knack for painting and loves watching thrillers and classic old movies.
+                <br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meghna Section end-->
+
+        <br>
+        <br>
+
+        <!-- Phebe Section Start-->
+
+        <div class="content-card"
+          style="display: flex; align-items: flex-start; gap: 20px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);; border-radius: 10px;">
+          <!-- Image Section -->
+          <figure style="margin: 0; display: flex; flex-direction: column; align-items: center;">
+            <img src="assets/Pictures/phebe_headshot.png" alt="Phebe Chen"
+              style="width: 100%; max-width: 200px; height: 250px; border-radius: 10px; margin-top: 50px; margin-bottom: 10px;">
+            <div style="text-align: center;">
+              <h5 class="h5 form-title">Socials:</h5>
+              <ul class="social-list"
+                style="list-style: none; padding: 0; display: flex; justify-content: center; gap: 10px;">
+                <li class="social-item">
+                  <a href="https://github.com/pchen718" class="socials-item">
+                    <img src="./assets/Pictures/github.png" style="width: 30px; height: 30px;">
+                  </a>
+                </li>
+                <li class="social-item">
+                  <a href="https://www.linkedin.com/in/phebe-chen-1bb16a264/" class="socials-item">
+                    <img src="./assets/Pictures/linkedin.png" style="width: 30px; height: 30px;">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </figure>
+
+          <!-- Text Section -->
+          <div class="text-section" style="flex: 1; min-width: 300px;">
+            <h3 class="h3 form-title" style="margin: 0;">Phebe Chen</h3>
+            <div class="email-field" style="margin-top: 10px;">
+              <div class="email-text">
+                Phebe Chen is a graduate student at CU Boulder, pursuing a Master’s degree in Applied Mathematics with a
+                focus on Data Science and Statistics. She has developed a strong skill set in statistical modeling,
+                machine learning, and data visualization through her coursework and projects. Phebe has hands-on
+                experience with data wrangling, predictive modeling, and advanced statistical analysis, utilizing
+                programming
+                languages such as R, Python, and Stata. Most of her work has centered around modeling and visualizing
+                economic and sports data, though she is eager to expand her expertise into environmental analytics to
+                tackle
+                more complex challenges.
+                <br><br>
+                Outside of her academic pursuits, Phebe enjoys staying active through golfing, skiing, running, and
+                working out.
+                <br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phebe Section end-->
+
+        <br>
+        <br>
+
+        </article>
+      </div>
+    </main>
+
+    <!--
+    - custom js link
+  -->
+    <script src="./assets/js/script.js"></script>
+
+    <!--
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
